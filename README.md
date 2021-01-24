@@ -1,6 +1,33 @@
-# Getting Started with Create React App
+# Introduction
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). This project used Places API and Open Weather API to make a 5 days forecast weather for a specific city.
+
+## API Preparation
+
+For this project to work normally, you need to modify the file `.env.sample` to `.env` and copy your API keys for Open Weather API and Places API.
+
+### Places API registration
+
+Places API is used to display autocomplete function, to run this app you need to replace `YOUR_API_KEY` in `REACT_APP_PLACES_API=YOUR_API_KEY`
+
+To register your API key, please follow the instruction [here](https://developers.google.com/places/web-service/get-api-key)
+
+### Open Weather API registration
+
+Open Weather API is used to have forecast data for 5 days based on the location (latitude and longtitude) we give it.
+
+Steps to get the API:
+- Register an account [here](https://home.openweathermap.org/users/sign_up)
+- Verfiy your account with your email and login [here](https://home.openweathermap.org/users/sign_in)
+- Access your list of API keys [here](https://home.openweathermap.org/api_keys)
+- Create a new API key to use for this project
+- Copy your API key and replace `YOUR_API_KEY` in `REACT_APP_OPEN_WEATHER_API_KEY=YOUR_API_KEY` in `.env`
+- Your API will take about 15 minutes to 2 hours to be active so be patient
+
+## Limitations
+
+- This project should use a Back End server to provide another layer to access to these API we are using. So you don't need to public your API keys.
+- `.env` is already put in `.gitignore` but please be careful to not publish your API keys when you do commit and push.
 
 ## Available Scripts
 
@@ -29,42 +56,3 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

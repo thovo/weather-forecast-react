@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { connect, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import { updateAddress } from '../../actions';
 let autoComplete;
 const googleScript = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_PLACES_API}&libraries=places`;
 
-const SearchLocationInput = () => {
+const SearchLocationInput = (props) => {
 	const [query, setQuery] = useState('');
 	const autoCompleteRef = useRef(null);
-	const dispatch = useDispatch();
 
 	const loadScript = (url, callback) => {
 		if (!document.querySelector('script[src="' + googleScript + '"]')) {
@@ -49,7 +48,7 @@ const SearchLocationInput = () => {
 			address,
 			geometry,
 		};
-		dispatch({ type: 'UPDATE_ADDRESS', payload: place });
+		props.updateAddress(place);
 		updateQuery(address);
 	};
 
@@ -62,7 +61,7 @@ const SearchLocationInput = () => {
 			<input
 				ref={autoCompleteRef}
 				onChange={(event) => setQuery(event.target.value)}
-				placeholder='Enter a City'
+				placeholder='Enter a city'
 				value={query}
 				className='form-control'
 				type='text'
@@ -71,4 +70,5 @@ const SearchLocationInput = () => {
 	);
 };
 
-export default connect(null, updateAddress)(SearchLocationInput);
+const mapDispatchToProps = { updateAddress };
+export default connect(null, mapDispatchToProps)(SearchLocationInput);
