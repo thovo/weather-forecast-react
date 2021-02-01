@@ -1,33 +1,23 @@
 import React from 'react';
+import SearchLocationInput from './SearchLocationInput.js';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
-import App from './App';
-import callWeatherForecastReducer from './reducers/callWeatherForecast';
+import updateAddressReducer from '../../reducers/updateAddress';
+
 const mockStore = configureStore([]);
 
-describe('App', () => {
+describe('Search Location Input Component', () => {
 	let store;
 	let component;
 	beforeEach(() => {
 		store = mockStore({
-			updateAddressReducer: {
-				address: '',
-				geometry: {
-					lat: 0,
-					lng: 0,
-				},
-			},
-			callWeatherForecastReducer: {
-				data: {
-					list: [],
-				},
-			},
+			state: '',
 		});
 
 		component = renderer.create(
 			<Provider store={store}>
-				<App />
+				<SearchLocationInput />
 			</Provider>
 		);
 	});
@@ -37,22 +27,36 @@ describe('App', () => {
 	});
 
 	it('should return the initial state', () => {
-		const expected = {};
-		expect(callWeatherForecastReducer(undefined, {})).toEqual(expected);
+		const expected = {
+			address: '',
+			geometry: {
+				lat: 0,
+				lng: 0,
+			},
+		};
+		expect(updateAddressReducer(undefined, {})).toEqual(expected);
 	});
 
-	it('should handle call weather forecast data', () => {
+	it('should handle update address', () => {
 		const data = {
-			list: [],
+			address: '',
+			geometry: {
+				lat: 0,
+				lng: 0,
+			},
 		};
 		const action = {
-			type: 'CALL_WEATHER_FORECAST',
+			type: 'UPDATE_ADDRESS',
 			payload: data,
 		};
 
 		const expected = {
-			list: [],
+			address: '',
+			geometry: {
+				lat: 0,
+				lng: 0,
+			},
 		};
-		expect(callWeatherForecastReducer({}, action)).toEqual(expected);
+		expect(updateAddressReducer({}, action)).toEqual(expected);
 	});
 });
